@@ -29,7 +29,6 @@ body {
   align-items: center;
 }
 #elementDiv1Child div {
-  background-color: green;
   border-radius: 50%;
   width: 14px;
   height: 14px;
@@ -65,13 +64,13 @@ body {
   background-color: black;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr 4fr;
+  grid-template-rows: 2fr 2fr 6fr;
   border: 8px solid rgb(2, 3, 7);
   border-radius: 10px;
   margin-right: 3px;
 }
 #digitBoardDiv {
-  background-color: rgb(58, 75, 38);
+  background-color: rgb(4, 6, 14);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
@@ -87,13 +86,55 @@ body {
   border-bottom: 1px solid rgb(60, 250, 2);
 }
 #displayImgDiv {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+#displayImgDivContainer {
+  width: 300px;
+  height: 300px;
 }
 .button {
-  width: 60px;
-  height: 50px;
+  width: 95px;
+  height: 85px;
+  background-color: black;
+  border-radius: 10px;
+  font-size: 20px;
+}
+.number {
+  color: green;
+}
+.operation {
+  color: rgb(167, 112, 11);
+}
+.clean {
+  color: rgb(53, 53, 204);
+  font-size: 17px;
+}
+#equals {
+  color: purple;
+  font-size: 22px;
+}
+#point {
+  color: green;
+  font-size: 22px;
 }
 #vaultBoyImg {
   max-width: 100%;
   max-height: 100%;
   min-height: 100%;
+  opacity: 0.5;
+}
+
+#numberInputNotificationDiv {
+  background-color: rgb(1, 73, 1);
+}
+#operationInputNotificationDiv {
+  background-color: rgb(110, 58, 21);
+}
+#equalsNotificationDiv {
+  background-color: rgb(75, 15, 75);
+}
+#cleanNotificationDiv {
+  background-color: rgb(19, 19, 110);
 }
