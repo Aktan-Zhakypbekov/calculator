@@ -1,8 +1,8 @@
 body {
-  background-color: blueviolet;
+  background-color: black;
 }
 #mainContainerDiv {
-  background-color: cadetblue;
+  background-color: rgb(10, 44, 54);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,7 +46,7 @@ body {
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
   text-align: center;
-  color: rgb(138, 93, 9);
+  color: rgb(124, 101, 26);
 }
 #calculatorDiv {
   width: 920px;
@@ -54,7 +54,7 @@ body {
   display: grid;
   grid-template-columns: 5fr 6fr;
   grid-template-rows: 1fr;
-  border: 10px solid rgb(13, 24, 0);
+  border: 16px solid rgb(13, 24, 0);
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -81,18 +81,20 @@ body {
 }
 #displayCalculationDiv {
   border-bottom: 1px solid rgb(60, 250, 2);
+  color: green;
 }
 #displayResultDiv {
   border-bottom: 1px solid rgb(60, 250, 2);
+  color: green;
 }
 #displayImgDiv {
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-end;
+  justify-content: center;
+  align-items: center;
 }
 #displayImgDivContainer {
-  width: 300px;
-  height: 300px;
+  width: 100%;
+  height: 100%;
 }
 .button {
   width: 95px;
@@ -112,8 +114,8 @@ body {
   font-size: 17px;
 }
 #equals {
-  color: purple;
-  font-size: 22px;
+  color: rgb(160, 23, 23);
+  font-size: 24px;
 }
 #point {
   color: green;
@@ -123,18 +125,18 @@ body {
   max-width: 100%;
   max-height: 100%;
   min-height: 100%;
-  opacity: 0.5;
+  opacity: 0.3;
 }
 
 #numberInputNotificationDiv {
-  background-color: rgb(1, 73, 1);
+  background-color: rgb(71, 82, 71);
 }
 #operationInputNotificationDiv {
-  background-color: rgb(110, 58, 21);
+  background-color: rgb(71, 82, 71);
 }
 #equalsNotificationDiv {
-  background-color: rgb(75, 15, 75);
+  background-color: rgb(71, 82, 71);
 }
 #cleanNotificationDiv {
-  background-color: rgb(19, 19, 110);
+  background-color: rgb(71, 82, 71);
 }
