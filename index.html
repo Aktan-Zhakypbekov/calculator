@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link href="index.css" rel="stylesheet" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Orbitron&display=swap");
+    </style>
   </head>
   <body>
     <div id="mainContainerDiv">
@@ -20,8 +23,12 @@
         </div>
         <div id="calculatorDiv">
           <div id="displayDiv">
-            <div id="displayCalculationDiv"></div>
-            <div id="displayResultDiv"></div>
+            <div id="displayCalculationDiv">
+              <input type="text" id="displayCalculationDivInput" />
+            </div>
+            <div id="displayResultDiv">
+              <input type="text" id="displayResultDivInput" />
+            </div>
             <div id="displayImgDiv">
               <div id="displayImgDivContainer">
                 <img
@@ -34,42 +41,28 @@
           <div id="digitBoardDiv">
             <button class="button clean" id="ac">AC</button>
             <button class="button clean" id="c">C</button>
-            <button class="button operation" value="pow" id="pow">pow</button>
-            <button class="button operation" value="modulo" id="modulo">
-              %
-            </button>
+            <button class="button operation" value="^" id="pow">^</button>
+            <button class="button operation" value="%" id="modulo">%</button>
             <button class="button number" value="7" id="7">7</button>
             <button class="button number" value="8" id="8">8</button>
             <button class="button number" value="9" id="9">9</button>
-            <button class="button operation" value="division" id="division">
-              /
-            </button>
+            <button class="button operation" value="/" id="division">/</button>
             <button class="button number" value="4" id="4">4</button>
             <button class="button number" value="5" id="5">5</button>
             <button class="button number" value="6" id="6">6</button>
-            <button
-              class="button operation"
-              value="multiplication"
-              id="multiplication"
-            >
+            <button class="button operation" value="x" id="multiplication">
               x
             </button>
             <button class="button number" value="1" id="1">1</button>
             <button class="button number" value="2" id="2">2</button>
             <button class="button number" value="3" id="3">3</button>
-            <button
-              class="button operation"
-              value="subtraction"
-              id="subtraction"
-            >
+            <button class="button operation" value="-" id="subtraction">
               -
             </button>
             <button class="button number" value="0" id="0">0</button>
-            <button class="button" value="point" id="point">.</button>
-            <button class="button" value="equals" id="equals">=</button>
-            <button class="button operation" value="addition" id="addition">
-              +
-            </button>
+            <button class="button" value="." id="point">.</button>
+            <button class="button" value="=" id="equals">=</button>
+            <button class="button operation" value="+" id="addition">+</button>
           </div>
         </div>
         <div id="elementDiv2">

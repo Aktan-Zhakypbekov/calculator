@@ -1,5 +1,6 @@
 body {
   background-color: black;
+  font-family: "Orbitron", sans-serif;
 }
 #mainContainerDiv {
   background-color: rgb(10, 44, 54);
@@ -82,10 +83,50 @@ body {
 #displayCalculationDiv {
   border-bottom: 1px solid rgb(60, 250, 2);
   color: green;
+  font-size: 35px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+#displayCalculationDivInput {
+  width: 390px;
+  height: 60px;
+  background-color: black;
+  color: green;
+  font-family: "Orbitron", sans-serif;
+  font-size: 35px;
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: hidden;
+  text-align: right;
+}
+#displayCalculationDivInput:focus {
+  outline: none;
 }
 #displayResultDiv {
   border-bottom: 1px solid rgb(60, 250, 2);
   color: green;
+  font-size: 35px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+#displayResultDivInput {
+  width: 390px;
+  height: 60px;
+  background-color: black;
+  color: green;
+  font-family: "Orbitron", sans-serif;
+  font-size: 35px;
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: hidden;
+  text-align: right;
+}
+#displayResultDivInput:focus {
+  outline: none;
 }
 #displayImgDiv {
   display: flex;
@@ -102,6 +143,7 @@ body {
   background-color: black;
   border-radius: 10px;
   font-size: 20px;
+  font-family: "Orbitron", sans-serif;
 }
 .number {
   color: green;

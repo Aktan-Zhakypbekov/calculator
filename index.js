@@ -1,39 +1,35 @@
 const add = function (a, b) {
   return parseInt(a) + parseInt(b);
 };
-
 const subtract = function (a, b) {
-  return a - b;
+  return parseInt(a) - parseInt(b);
 };
-const mulyiply = function (a, b) {
-  return a * b;
+const mutiply = function (a, b) {
+  return parseInt(a) * parseInt(b);
 };
 const divide = function (a, b) {
-  return a / b;
+  if (parseInt(a) === 0 || parseInt(b) === 0) return "Unexpeted operation";
+  return parseInt(a) / parseInt(b);
 };
+const pow = function (a, b) {
+  return Math.pow(parseInt(a), parseInt(b));
+};
+const modulo = function (a, b) {
+  return parseInt(a) % parseInt(b);
+};
+let displayCalculationDivVar = document.querySelector(
+  "#displayCalculationDivInput"
+);
+let displayResultDivVar = document.querySelector("#displayResultDivInput");
 
-const power = function (a, b) {
-  return Math.pow(a, b);
-};
-
-const factorial = function (a) {
-  if (a == 0) {
-    return 1;
-  }
-  let fact = 1;
-  for (let i = 1; i <= a; i++) {
-    fact *= i;
-  }
-  return fact;
-};
-let displayCalculationDivVar = document.querySelector("#displayCalculationDiv");
-let displayResultDivVar = document.querySelector("#displayResultDiv");
-let array = [];
-let firstOperand;
-let secondOperand;
+let firstOperand = null;
+let secondOperand = null;
 let operator = "empty";
 let firstOperandInput = false;
 let secondOperandInput = false;
+let result = null;
+let array = [];
+let equalsButtonPressed = false;
 
 let numberButtonsList = document.querySelectorAll(".number");
 let numberInputNotificationDivVar = document.querySelector(
@@ -51,18 +47,8 @@ numberButtonsList.forEach((numberButton) => {
     e.target.style.cssText = "";
   });
   numberButton.addEventListener("click", (e) => {
+    displayCalculationDivVar.value += e.target.value;
     array.push(e.target.value);
-    displayCalculationDivVar.textContent += e.target.value;
-    if (firstOperandInput === true) {
-      secondOperand = array.join("");
-      secondOperandInput = true;
-    }
-    if (operator !== "empty" && secondOperandInput === true) {
-      displayResultDivVar.textContent = add(firstOperand, secondOperand);
-      firstOperand = displayResultDivVar.textContent;
-      firstOperandInput = true;
-      operator = "empty";
-    }
   });
 });
 
@@ -82,13 +68,13 @@ operationButtonsList.forEach((operationButton) => {
     e.target.style.cssText = "";
   });
   operationButton.addEventListener("click", (e) => {
-    displayCalculationDivVar.textContent += e.target.textContent;
+    displayCalculationDivVar.value += e.target.value;
     if (firstOperandInput === false) {
       firstOperand = array.join("");
       firstOperandInput = true;
       array = [];
     }
-    operator = e.target.textContent;
+    operator = e.target.value;
   });
 });
 
@@ -106,6 +92,16 @@ cleanButtonsList.forEach((cleanButton) => {
     e.target.style.cssText = "";
   });
 });
+let acButton = document.querySelector("#ac");
+acButton.addEventListener("click", (e) => {
+  array = [];
+  firstOperand = null;
+  firstOperandInput = false;
+  secondOperand = null;
+  secondOperandInput = false;
+  displayCalculationDivVar.value = "";
+  displayResultDivVar.value = "";
+});
 
 let equalsButton = document.querySelector("#equals");
 let equalsNotificationDivVar = document.querySelector("#equalsNotificationDiv");
@@ -121,9 +117,25 @@ equalsButton.addEventListener("mouseup", (e) => {
   e.target.style.cssText = "";
 });
 equalsButton.addEventListener("click", (e) => {
+  secondOperand = array.join("");
+  secondOperandInput = true;
   array = [];
-  displayCalculationDivVar.textContent = displayResultDivVar.textContent;
-  displayResultDivVar.textContent = "";
-  secondOperand = 0;
-  secondOperandInput = false;
+  if (operator === "+") {
+    result = add(firstOperand, secondOperand);
+  } else if (operator === "-") {
+    result = subtract(firstOperand, secondOperand);
+  } else if (operator === "x") {
+    result = mutiply(firstOperand, secondOperand);
+  } else if (operator === "/") {
+    result = divide(firstOperand, secondOperand);
+  } else if (operator === "^") {
+    result = pow(firstOperand, secondOperand);
+  } else if (operator === "%") {
+    result = modulo(firstOperand, secondOperand);
+  }
+  displayCalculationDivVar.value = String(result);
+  displayResultDivVar.value = displayCalculationDivVar.value;
+  array.push(String(result));
+  firstOperandInput = false;
+  equalsButtonPressed = true;
 });
