@@ -1,21 +1,21 @@
 const add = function (a, b) {
-  return parseInt(a) + parseInt(b);
+  return parseFloat(a) + parseFloat(b);
 };
 const subtract = function (a, b) {
-  return parseInt(a) - parseInt(b);
+  return parseFloat(a) - parseFloat(b);
 };
 const mutiply = function (a, b) {
-  return parseInt(a) * parseInt(b);
+  return parseFloat(a) * parseFloat(b);
 };
 const divide = function (a, b) {
-  if (parseInt(a) === 0 || parseInt(b) === 0) return "Unexpeted operation";
-  return parseInt(a) / parseInt(b);
+  if (parseFloat(a) === 0 || parseFloat(b) === 0) return "Unexpeted operation";
+  return parseFloat(a) / parseFloat(b);
 };
 const pow = function (a, b) {
-  return Math.pow(parseInt(a), parseInt(b));
+  return Math.pow(parseFloat(a), parseFloat(b));
 };
 const modulo = function (a, b) {
-  return parseInt(a) % parseInt(b);
+  return parseFloat(a) % parseFloat(b);
 };
 
 let displayCalculationDivVar = document.querySelector(
@@ -50,8 +50,18 @@ numberButtonsList.forEach((numberButton) => {
   numberButton.addEventListener(
     "click",
     (numberInputFunc = (e) => {
-      displayCalculationDivVar.value += e.target.value;
-      array.push(e.target.value);
+      if (e.target.value === ".") {
+        if (array[0].includes(".") || array.includes(".")) {
+          array.push("");
+          displayCalculationDivVar.value += "";
+        } else {
+          array.push(e.target.value);
+          displayCalculationDivVar.value += e.target.value;
+        }
+      } else {
+        displayCalculationDivVar.value += e.target.value;
+        array.push(e.target.value);
+      }
     })
   );
 });
@@ -105,6 +115,7 @@ operationButtonsList.forEach((operationButton) => {
         firstOperandInput = true;
         operator = e.target.value;
         displayCalculationDivVar.value += operator;
+        array = [];
       }
       if (operator != "empty" && array.length === 0) {
         operator = e.target.value;
