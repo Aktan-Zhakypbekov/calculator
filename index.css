@@ -145,6 +145,19 @@ body {
   font-size: 20px;
   font-family: "Orbitron", sans-serif;
 }
+#logo {
+  width: 88px;
+  height: 88px;
+  background-color: black;
+  color: green;
+  border-radius: 50%;
+  font-size: 14px;
+  font-family: "Orbitron", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgb(5, 71, 5);
+}
 .number {
   color: green;
 }

@@ -17,6 +17,7 @@ const pow = function (a, b) {
 const modulo = function (a, b) {
   return parseInt(a) % parseInt(b);
 };
+
 let displayCalculationDivVar = document.querySelector(
   "#displayCalculationDivInput"
 );
@@ -46,10 +47,13 @@ numberButtonsList.forEach((numberButton) => {
     numberInputNotificationDivVar.style.cssText = "";
     e.target.style.cssText = "";
   });
-  numberButton.addEventListener("click", (e) => {
-    displayCalculationDivVar.value += e.target.value;
-    array.push(e.target.value);
-  });
+  numberButton.addEventListener(
+    "click",
+    (numberInputFunc = (e) => {
+      displayCalculationDivVar.value += e.target.value;
+      array.push(e.target.value);
+    })
+  );
 });
 
 let operationButtonsList = document.querySelectorAll(".operation");
@@ -67,15 +71,55 @@ operationButtonsList.forEach((operationButton) => {
     operationInputNotificationDivVar.style.cssText = "";
     e.target.style.cssText = "";
   });
-  operationButton.addEventListener("click", (e) => {
-    displayCalculationDivVar.value += e.target.value;
-    if (firstOperandInput === false) {
-      firstOperand = array.join("");
-      firstOperandInput = true;
-      array = [];
-    }
-    operator = e.target.value;
-  });
+  operationButton.addEventListener(
+    "click",
+    (operateFunc = (e) => {
+      if (firstOperandInput === false) {
+        firstOperand = array.join("");
+        firstOperandInput = true;
+        array = [];
+      }
+      if (operator != "empty" && array.length !== 0) {
+        secondOperand = array.join("");
+        secondOperandInput = true;
+        array = [];
+        if (operator === "+") {
+          result = add(firstOperand, secondOperand);
+        } else if (operator === "-") {
+          result = subtract(firstOperand, secondOperand);
+        } else if (operator === "x") {
+          result = mutiply(firstOperand, secondOperand);
+        } else if (operator === "/") {
+          result = divide(firstOperand, secondOperand);
+        } else if (operator === "^") {
+          result = pow(firstOperand, secondOperand);
+        } else if (operator === "%") {
+          result = modulo(firstOperand, secondOperand);
+        } else if (operator === "^") {
+          result = fact(firstOperand);
+        }
+        displayCalculationDivVar.value = String(result);
+        displayResultDivVar.value = displayCalculationDivVar.value;
+        array.push(String(result));
+        firstOperand = array.join("");
+        firstOperandInput = true;
+        operator = e.target.value;
+        displayCalculationDivVar.value += operator;
+      }
+      if (operator != "empty" && array.length === 0) {
+        operator = e.target.value;
+        displayCalculationDivVar.value =
+          displayCalculationDivVar.value.substring(
+            0,
+            displayCalculationDivVar.value.length - 1
+          ) + e.target.value;
+      }
+      if (operator == "empty") {
+        operator = e.target.value;
+        displayCalculationDivVar.value += e.target.value;
+      }
+    })
+  );
 });
 
 let cleanButtonsList = document.querySelectorAll(".clean");
@@ -93,15 +137,19 @@ cleanButtonsList.forEach((cleanButton) => {
   });
 });
 let acButton = document.querySelector("#ac");
-acButton.addEventListener("click", (e) => {
-  array = [];
-  firstOperand = null;
-  firstOperandInput = false;
-  secondOperand = null;
-  secondOperandInput = false;
-  displayCalculationDivVar.value = "";
-  displayResultDivVar.value = "";
-});
+acButton.addEventListener(
+  "click",
+  (cleanFunc = (e) => {
+    array = [];
+    firstOperand = null;
+    firstOperandInput = false;
+    secondOperand = null;
+    secondOperandInput = false;
+    displayCalculationDivVar.value = "";
+    displayResultDivVar.value = "";
+    operator = "empty";
+  })
+);
 
 let equalsButton = document.querySelector("#equals");
 let equalsNotificationDivVar = document.querySelector("#equalsNotificationDiv");
@@ -116,26 +164,30 @@ equalsButton.addEventListener("mouseup", (e) => {
   equalsNotificationDivVar.style.cssText = "";
   e.target.style.cssText = "";
 });
-equalsButton.addEventListener("click", (e) => {
-  secondOperand = array.join("");
-  secondOperandInput = true;
-  array = [];
-  if (operator === "+") {
-    result = add(firstOperand, secondOperand);
-  } else if (operator === "-") {
-    result = subtract(firstOperand, secondOperand);
-  } else if (operator === "x") {
-    result = mutiply(firstOperand, secondOperand);
-  } else if (operator === "/") {
-    result = divide(firstOperand, secondOperand);
-  } else if (operator === "^") {
-    result = pow(firstOperand, secondOperand);
-  } else if (operator === "%") {
-    result = modulo(firstOperand, secondOperand);
-  }
-  displayCalculationDivVar.value = String(result);
-  displayResultDivVar.value = displayCalculationDivVar.value;
-  array.push(String(result));
-  firstOperandInput = false;
-  equalsButtonPressed = true;
-});
+equalsButton.addEventListener(
+  "click",
+  (equalsFunc = (e) => {
+    secondOperand = array.join("");
+    secondOperandInput = true;
+    array = [];
+    if (operator === "+") {
+      result = add(firstOperand, secondOperand);
+    } else if (operator === "-") {
+      result = subtract(firstOperand, secondOperand);
+    } else if (operator === "x") {
+      result = mutiply(firstOperand, secondOperand);
+    } else if (operator === "/") {
+      result = divide(firstOperand, secondOperand);
+    } else if (operator === "^") {
+      result = pow(firstOperand, secondOperand);
+    } else if (operator === "%") {
+      result = modulo(firstOperand, secondOperand);
+    }
+    displayCalculationDivVar.value = String(result);
+    displayResultDivVar.value = displayCalculationDivVar.value;
+    array.push(String(result));
+    firstOperandInput = false;
+    equalsButtonPressed = true;
+    operator = "empty";
+  })
+);
