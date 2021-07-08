@@ -2,9 +2,25 @@ body {
   background-color: black;
   font-family: "Orbitron", sans-serif;
 }
+#pageTitle {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  background-color: rgb(0, 7, 12);
+  height: 45px;
+  color: green;
+  font-size: 25px;
+}
+#pageTitle div {
+  margin-left: 15px;
+}
+#author {
+  margin-top: 90px;
+}
 #mainContainerDiv {
   background-color: rgb(10, 44, 54);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 960px;

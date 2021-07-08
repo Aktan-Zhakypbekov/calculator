@@ -1,21 +1,21 @@
 const add = function (a, b) {
-  return parseFloat(a) + parseFloat(b);
+  return Math.round((parseFloat(a) + parseFloat(b)) * 1000) / 1000;
 };
 const subtract = function (a, b) {
-  return parseFloat(a) - parseFloat(b);
+  return Math.round((parseFloat(a) - parseFloat(b)) * 1000) / 1000;
 };
 const mutiply = function (a, b) {
-  return parseFloat(a) * parseFloat(b);
+  return Math.round(parseFloat(a) * parseFloat(b) * 1000) / 1000;
 };
 const divide = function (a, b) {
   if (parseFloat(a) === 0 || parseFloat(b) === 0) return "Unexpeted operation";
-  return parseFloat(a) / parseFloat(b);
+  return Math.round((parseFloat(a) / parseFloat(b)) * 1000) / 1000;
 };
 const pow = function (a, b) {
-  return Math.pow(parseFloat(a), parseFloat(b));
+  return Math.round(Math.pow(parseFloat(a), parseFloat(b)) * 1000) / 1000;
 };
 const modulo = function (a, b) {
-  return parseFloat(a) % parseFloat(b);
+  return Math.round((parseFloat(a) % parseFloat(b)) * 1000) / 1000;
 };
 
 let displayCalculationDivVar = document.querySelector(
